@@ -1,0 +1,51 @@
+<div class="mt-2">
+  <form class="d-flex justify-content-between" [formGroup]="filters">
+    <mat-form-field appearance="standard">
+      <mat-label>Search</mat-label>
+      <input formControlName="beer_name" matInput />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Brewed Since</mat-label>
+        <input type="month" formControlName="brewed_after" matInput />
+      </mat-form-field>
+
+      <mat-form-field appearance="standard" class="ms-4">
+        <mat-label>Brewed Till</mat-label>
+        <input type="month" formControlName="brewed_before" matInput />
+      </mat-form-field>
+
+      <button class="ms-3" mat-raised-button (click)="filters.reset()">Reset</button>
+    </div>
+  </form>
+
+  <div #scroll_container id="scroll_container" (scroll)="onScroll()" class="row rounded shadow-lg p-3">
+    <div class="col-md-6 col-xl-4 mb-3" *ngFor="let beer of beers">
+      <mat-card class="shadow">
+        <mat-card-header class="w-100">
+          <mat-card-title class="w-100">{{ beer.name }}</mat-card-title>
+          <mat-card-subtitle>Since {{ beer.first_brewed }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image [src]="beer.image_url" />
+
+        <mat-card-actions>
+          <button
+            class="flex-grow-1"
+            mat-raised-button
+            color="primary"
+            (click)="checkout.add(beer)"
+            [disabled]="checkout.has(beer)"
+          >
+            Add To Card
+          </button>
+          <button class="flex-grow-1" mat-stroked-button color="primary" [routerLink]="['/beer', beer.id]">
+            See More
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

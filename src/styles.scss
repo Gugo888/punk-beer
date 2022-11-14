@@ -1,1 +1,67 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mat-card {
+  .mat-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .mat-card-avatar {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .mat-card-header .mat-card-header-text {
+    width: 100%;
+    margin: 0;
+  }
+
+  .mat-card-title {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-radius: 10px;
+  background-color: #292d3333;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #292d334d;
+}

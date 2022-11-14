@@ -1,0 +1,11 @@
+.empty-card-page {
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img, p {
+        width: 300px;
+    }
+}

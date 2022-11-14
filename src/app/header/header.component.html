@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <div class="d-flex justify-content-between py-3 px-5 w-100">
+    <span class="cursor-pointer" routerLink="/beers">Punk Beer</span>
+    <button routerLink="/checkout" mat-icon-button>
+      <mat-icon [matBadge]="checkout.totalItems" matBadgeColor="warn">shopping_cart</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

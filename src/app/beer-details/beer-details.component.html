@@ -1,0 +1,125 @@
+<ng-container *ngIf="currentBeer">
+  <div class="my-3 d-flex justify-content-center">
+    <mat-card class="shadow" style="width: 500px">
+      <mat-card-header class="w-100">
+        <mat-card-title class="w-100">{{ currentBeer.name }}</mat-card-title>
+        <mat-card-subtitle>Since {{ currentBeer.first_brewed }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="currentBeer.image_url" onerror="this.src = '/assets/not-found.png'" />
+      <mat-card-content>
+        <p class="text-secondary">{{ currentBeer.description }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          class="flex-grow-1"
+          mat-raised-button
+          color="primary"
+          (click)="checkout.add(currentBeer)"
+          [disabled]="checkout.has(currentBeer)"
+        >
+          Add To Card
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <mat-expansion-panel [expanded]="true" class="mb-4">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="me-2">Recipe</span>
+        <mat-icon>list</mat-icon>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="d-flex text-secondary">
+      <div class="info-section">
+        <h3>Hops</h3>
+        <ul>
+          <li *ngFor="let ingridient of currentBeer.ingredients.hops">
+            {{ ingridient.name }} - {{ ingridient.amount.value }}/{{ ingridient.amount.unit }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <h3>Malt</h3>
+
+        <ul>
+          <li *ngFor="let ingridient of currentBeer.ingredients.malt">
+            {{ ingridient.name }} - {{ ingridient.amount.value }}/{{ ingridient.amount.unit }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="info-section">
+        <h3>Method</h3>
+  
+        <ul *ngFor="let method of currentBeer.method.mash_temp">
+          <li>Minutes - {{ method.duration || 'Unknown' }}</li>
+          <li>Temperature - {{ method.temp.value }}/{{ method.temp.unit }}</li>
+        </ul>
+      </div>
+    </div>
+
+    
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="mb-4">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <span class="me-2">Additional Info</span>
+        <mat-icon>info</mat-icon>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <div class="d-flex text-secondary">
+      <div class="info-section">
+        <h3>Description</h3>
+        <p>{{ currentBeer.description }}</p>
+      </div>
+      <div class="info-section">
+        <h3>Food Pairing</h3>
+        <p>{{ currentBeer.food_pairing }}</p>
+      </div>
+      <div class="info-section">
+        <h3>Brewers Tips</h3>
+        <p>{{ currentBeer.brewers_tips }}</p>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+
+
+  
+  <h1 class="mb-1 mt-5">Similar Beers</h1>
+  <mat-divider class="mb-3"></mat-divider>
+
+  <div class="row">
+    <div class="col-6 mb-3" *ngFor="let beer of similarBeers">
+      <mat-card class="shadow">
+        <mat-card-header class="w-100">
+          <mat-card-title class="w-100">{{ beer.name }}</mat-card-title>
+          <mat-card-subtitle>Since {{ beer.first_brewed }}</mat-card-subtitle>
+        </mat-card-header>
+
+        <img mat-card-image [src]="beer.image_url" />
+
+        <mat-card-actions>
+          <button
+            class="flex-grow-1"
+            mat-raised-button
+            color="primary"
+            (click)="checkout.add(beer)"
+            [disabled]="checkout.has(beer)"
+          >
+            Add To Card
+          </button>
+          <button class="flex-grow-1" mat-stroked-button color="primary" [routerLink]="['/beer', beer.id]">
+            See More
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+ 
+</ng-container>
