@@ -21,9 +21,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
+import { NotFoundImgDirective } from './not-found-img.directive';
 
 @NgModule({
-  declarations: [AppComponent, BeerListComponent, BeerDetailsComponent, CheckoutComponent, HeaderComponent],
+  declarations: [AppComponent, BeerListComponent, BeerDetailsComponent, CheckoutComponent, HeaderComponent, NotFoundImgDirective],
   imports: [
     BrowserModule,
     AppRoutingModule,

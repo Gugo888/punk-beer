@@ -5,7 +5,7 @@
         <mat-card-title class="w-100">{{ currentBeer.name }}</mat-card-title>
         <mat-card-subtitle>Since {{ currentBeer.first_brewed }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image [src]="currentBeer.image_url" onerror="this.src = '/assets/not-found.png'" />
+      <img mat-card-image [src]="currentBeer.image_url" />
       <mat-card-content>
         <p class="text-secondary">{{ currentBeer.description }}</p>
       </mat-card-content>

@@ -1,6 +1,9 @@
 <mat-toolbar color="primary">
-  <div class="d-flex justify-content-between py-3 px-5 w-100">
-    <span class="cursor-pointer" routerLink="/beers">Punk Beer</span>
+  <div class="d-flex justify-content-between align-items-center py-3 px-5 w-100">
+    <div>
+      <img src="/assets/logo.png">
+      <span class="cursor-pointer" routerLink="/beers">Punk Beer</span>
+    </div>
     <button routerLink="/checkout" mat-icon-button>
       <mat-icon [matBadge]="checkout.totalItems" matBadgeColor="warn">shopping_cart</mat-icon>
     </button>
